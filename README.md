@@ -26,4 +26,4 @@ See docs/rubric.md.
 Planner → Extractors → Scoring → Verifier (evidence gate) → Report builder
 
 ## License
-MIT
+Apache 2
