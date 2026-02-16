@@ -24,6 +24,7 @@ def test_basic_scoring_structure(tmp_path):
         index=index,
         signals=signals,
         evidence_jsonl_path=tmp_path / "evidence.jsonl",
+        present_evidence_ids=set(),
     )
 
     assert "categories" in scorecard

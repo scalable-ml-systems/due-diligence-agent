@@ -33,6 +33,19 @@ def run_analysis(
 ) -> dict[str, Any]:
     cfg = load_config(config_path)
 
+    def _present_evidence_ids(evidence_jsonl_path: Path) -> set[str]:
+        ids: set[str] = set()
+        if not evidence_jsonl_path.exists():
+            return ids
+        for line in evidence_jsonl_path.read_text().splitlines():
+            try:
+                obj = json.loads(line)
+                if "id" in obj:
+                    ids.add(obj["id"])
+            except Exception:
+                continue
+        return ids
+
     # 1) clone
     work_dir = run_dir / "_work"
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -67,6 +80,8 @@ def run_analysis(
     signals["security_deps"] = extract_security_deps(repo_dir, index, evidence_dir, snippets_dir)
     signals["performance_smells"] = extract_performance_smells(repo_dir, index, evidence_dir, snippets_dir)
 
+    present_ids = _present_evidence_ids(evidence_dir / "evidence.jsonl")
+
     # 4) scoring (rubric engine)
     scorecard = score_repo(
         repo_meta=repo_meta,
@@ -76,6 +91,8 @@ def run_analysis(
         index=index,
         signals=signals,
         evidence_jsonl_path=evidence_dir / "evidence.jsonl",
+        present_evidence_ids=present_ids,
+
     )
 
     # 5) verifier (evidence gate)

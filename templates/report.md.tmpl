@@ -1,86 +1,89 @@
-# Due Diligence Report — {{repo.name}}
+# Due Diligence Report — {{ repo.name }}
 
-**Repo:** {{repo.url}}  
-**Commit:** {{repo.commit}}  
-**Run ID:** {{run.id}}  
-**Generated:** {{run.timestamp}}  
+**Repo:** {{ repo.url }}  
+**Commit:** {{ repo.commit }}  
+**Run ID:** {{ run.id }}  
+**Generated:** {{ run.timestamp }}  
 **Mode:** Evidence-first (claims require citations)
 
 ---
 
 ## Executive summary
-{{summary.executive}}
+{{ summary.executive }}
 
 ### Snapshot
-- **Primary language(s):** {{repo.languages}}
-- **Build/CI:** {{repo.ci_summary}}
-- **Deploy/IaC:** {{repo.deploy_summary}}
-- **Observability:** {{repo.observability_summary}}
+- **Primary language(s):** {{ repo.languages }}
+- **Build/CI:** {{ repo.ci_summary }}
+- **Deploy/IaC:** {{ repo.deploy_summary }}
+- **Observability:** {{ repo.observability_summary }}
 
 ---
 
 ## Scorecard (0–5)
 | Category | Score | Confidence | Notes |
 |---|---:|---:|---|
-{{#each scorecard.categories}}
-| {{name}} | {{score}} | {{confidence}} | {{short_note}} |
-{{/each}}
+{% for c in scorecard.categories %}
+| {{ c.name }} | {{ c.score }} | {{ c.confidence }} | {{ c.notes }} |
+{% endfor %}
 
-**Overall:** {{scorecard.overall.score}} / 5 (confidence {{scorecard.overall.confidence}})
+**Overall:** {{ scorecard.overall.score }} / 5 (confidence {{ scorecard.overall.confidence }})
 
 ---
 
 ## Architecture map
+
 ### Components
-{{#each architecture.components}}
-- **{{name}}** — {{purpose}} (evidence: {{evidence_ref}})
-{{/each}}
+{% for comp in architecture.components %}
+- **{{ comp.name }}** — {{ comp.purpose }} (evidence: {{ comp.evidence_ref }})
+{% endfor %}
 
 ### Data/control flows (high level)
-{{#each architecture.flows}}
-- {{from}} → {{to}} : {{why}} (evidence: {{evidence_ref}})
-{{/each}}
+{% for f in architecture.flows %}
+- {{ f.from }} → {{ f.to }} : {{ f.why }} (evidence: {{ f.evidence_ref }})
+{% endfor %}
 
 ---
 
 ## Top findings (highest leverage)
-{{#each findings.top}}
-### {{title}} (severity: {{severity}}, confidence: {{confidence}})
-**What we saw:** {{what}}  
-**Why it matters:** {{why}}  
-**Evidence:** {{evidence_list}}  
-**Recommendation:** {{recommendation}}  
-{{#if unverified}}**Unverified:** evidence incomplete — treat as hypothesis.{{/if}}
-{{/each}}
+{% for x in findings.top %}
+### {{ x.title }} (severity: {{ x.severity }}, confidence: {{ x.confidence }})
+**What we saw:** {{ x.what }}  
+**Why it matters:** {{ x.why }}  
+**Evidence:** {{ x.evidence_list }}  
+**Recommendation:** {{ x.recommendation }}  
+{% if x.unverified %}**Unverified:** evidence incomplete — treat as hypothesis.{% endif %}
+
+{% endfor %}
 
 ---
 
 ## Risks & failure modes
-{{#each risks}}
-- **{{title}}** (severity: {{severity}}, confidence: {{confidence}}) — {{detail}}  
-  Evidence: {{evidence_list}}
-{{/each}}
+{% for r in risks %}
+- **{{ r.title }}** (severity: {{ r.severity }}, confidence: {{ r.confidence }}) — {{ r.detail }}  
+  Evidence: {{ r.evidence_list }}
+{% endfor %}
 
 ---
 
 ## Quick wins (7–14 days)
-{{#each quick_wins}}
-- **{{title}}** — {{steps}}  
-  Evidence: {{evidence_list}}
-{{/each}}
+{% for q in quick_wins %}
+- **{{ q.title }}** — {{ q.steps }}  
+  Evidence: {{ q.evidence_list }}
+{% endfor %}
 
 ---
 
 ## Strategic roadmap (30–90 days)
-{{#each roadmap}}
-- **{{phase}}:** {{outcome}}  
-  Key work: {{work}}  
-  Success criteria: {{exit_criteria}}
-{{/each}}
+{% for p in roadmap %}
+- **{{ p.phase }}:** {{ p.outcome }}  
+  Key work: {{ p.work }}  
+  Success criteria: {{ p.exit_criteria }}
+{% endfor %}
 
 ---
 
 ## Appendix
+
 ### Evidence index
 - Evidence file: `evidence/evidence.jsonl`
 - Snippets: `evidence/snippets/`

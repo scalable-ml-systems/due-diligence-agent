@@ -18,3 +18,6 @@ dda = "dda.cli:app"
 [build-system]
 requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]

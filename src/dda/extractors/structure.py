@@ -23,9 +23,9 @@ def extract_structure(repo_dir: Path, index: FileIndex, evidence_dir: Path, snip
         write_evidence_jsonl(
             evidence_path,
             {
-                "id": eid,
+                "id": "EVID-STRUCT-TOPLEVEL",
                 "kind": "code",
-                "summary": f"Top-level component folder '{name}' (files scanned: {count})",
+                "summary": "Top-level repository structure inferred from folder distribution",
                 "refs": [{"type": "file_lines", "ref": f"{name}/:L1-L1"}],
             },
         )

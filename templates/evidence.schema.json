@@ -8,7 +8,7 @@
       "type": "object",
       "required": ["type", "ref"],
       "properties": {
-        "type": { "type": "string", "enum": ["file_lines", "snippet", "url"] },
+        "type": { "type": "string", "enum": ["evidence_id", "file_lines", "snippet", "url"] },
         "ref": { "type": "string" },
         "note": { "type": "string" }
       }
