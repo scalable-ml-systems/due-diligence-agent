@@ -1,0 +1,90 @@
+# Due Diligence Report — {{repo.name}}
+
+**Repo:** {{repo.url}}  
+**Commit:** {{repo.commit}}  
+**Run ID:** {{run.id}}  
+**Generated:** {{run.timestamp}}  
+**Mode:** Evidence-first (claims require citations)
+
+---
+
+## Executive summary
+{{summary.executive}}
+
+### Snapshot
+- **Primary language(s):** {{repo.languages}}
+- **Build/CI:** {{repo.ci_summary}}
+- **Deploy/IaC:** {{repo.deploy_summary}}
+- **Observability:** {{repo.observability_summary}}
+
+---
+
+## Scorecard (0–5)
+| Category | Score | Confidence | Notes |
+|---|---:|---:|---|
+{{#each scorecard.categories}}
+| {{name}} | {{score}} | {{confidence}} | {{short_note}} |
+{{/each}}
+
+**Overall:** {{scorecard.overall.score}} / 5 (confidence {{scorecard.overall.confidence}})
+
+---
+
+## Architecture map
+### Components
+{{#each architecture.components}}
+- **{{name}}** — {{purpose}} (evidence: {{evidence_ref}})
+{{/each}}
+
+### Data/control flows (high level)
+{{#each architecture.flows}}
+- {{from}} → {{to}} : {{why}} (evidence: {{evidence_ref}})
+{{/each}}
+
+---
+
+## Top findings (highest leverage)
+{{#each findings.top}}
+### {{title}} (severity: {{severity}}, confidence: {{confidence}})
+**What we saw:** {{what}}  
+**Why it matters:** {{why}}  
+**Evidence:** {{evidence_list}}  
+**Recommendation:** {{recommendation}}  
+{{#if unverified}}**Unverified:** evidence incomplete — treat as hypothesis.{{/if}}
+{{/each}}
+
+---
+
+## Risks & failure modes
+{{#each risks}}
+- **{{title}}** (severity: {{severity}}, confidence: {{confidence}}) — {{detail}}  
+  Evidence: {{evidence_list}}
+{{/each}}
+
+---
+
+## Quick wins (7–14 days)
+{{#each quick_wins}}
+- **{{title}}** — {{steps}}  
+  Evidence: {{evidence_list}}
+{{/each}}
+
+---
+
+## Strategic roadmap (30–90 days)
+{{#each roadmap}}
+- **{{phase}}:** {{outcome}}  
+  Key work: {{work}}  
+  Success criteria: {{exit_criteria}}
+{{/each}}
+
+---
+
+## Appendix
+### Evidence index
+- Evidence file: `evidence/evidence.jsonl`
+- Snippets: `evidence/snippets/`
+
+### Method
+- Rubric: `docs/rubric.md`
+- Methodology: `docs/methodology.md`

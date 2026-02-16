@@ -1,0 +1,50 @@
+version: 1
+agent:
+  name: "DDA (Due Diligence Agent)"
+  mode: "evidence-first"
+
+analysis:
+  max_files_scanned: 2500
+  max_file_bytes: 750000
+  include_globs:
+    - "**/*.md"
+    - "**/*.go"
+    - "**/*.py"
+    - "**/*.ts"
+    - "**/*.js"
+    - "**/*.java"
+    - "**/*.rs"
+    - "**/*.tf"
+    - "**/*.yaml"
+    - "**/*.yml"
+    - "**/Dockerfile"
+    - "**/*.sh"
+    - "**/*.sql"
+  exclude_globs:
+    - "**/vendor/**"
+    - "**/node_modules/**"
+    - "**/.git/**"
+    - "**/dist/**"
+    - "**/build/**"
+    - "**/*.png"
+    - "**/*.jpg"
+    - "**/*.pdf"
+
+evidence:
+  require_for_claims: true
+  min_confidence_if_no_evidence: 0.35
+  snippet_max_chars: 1800
+
+scoring:
+  scale:
+    min: 0
+    max: 5
+  confidence:
+    min: 0.0
+    max: 1.0
+
+report:
+  template: "templates/report.md.tmpl"
+  include_top_findings: 7
+  include_quick_wins: 5
+  include_risks: 7
