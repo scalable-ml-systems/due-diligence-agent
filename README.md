@@ -3,6 +3,70 @@
 DDA analyzes a GitHub repository and produces an **evidence-backed** due diligence report:
 architecture map, production readiness scorecard, risks, and quick wins.
 
+
+## Architecture
+
+                    +----------------------+
+                    |   GitHub Repo URL    |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    |    Ingestion Layer   |
+                    |  (clone + index)     |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    |      Extractors      |
+                    |----------------------|
+                    | docs                |
+                    | structure           |
+                    | ci                 |
+                    | infra              |
+                    | observability      |
+                    | security/deps      |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    |   Evidence Store     |
+                    |   evidence.jsonl     |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    |   Rubric Engine      |
+                    |   (scoring)          |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    |   Evidence Gate      |
+                    |   (verification)     |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    |   Report Renderer    |
+                    |   (Jinja2)           |
+                    +----------+-----------+
+                               |
+              +----------------+----------------+
+              |                |                |
+              v                v                v
+        report.md        scorecard.json      graph.json
+
+
+
+## **Design principles**
+
+- Evidence-first: every score must cite file-level evidence
+- Deterministic scoring: repeatable rubric evaluation
+- Verifier-gated: unsupported claims reduce confidence
+- Artifact-driven: outputs are shareable CTO-grade reports
+
+
 ## Why
 Most “repo analyzers” hallucinate. DDA enforces a strict rule:
 > Every meaningful claim must cite evidence (file path + line range or snippet).
