@@ -6,6 +6,15 @@ architecture map, production readiness scorecard, risks, and quick wins.
 
 ## Architecture
 
+
+
+## **Design principles**
+
+- Evidence-first: every score must cite file-level evidence
+- Deterministic scoring: repeatable rubric evaluation
+- Verifier-gated: unsupported claims reduce confidence
+- Artifact-driven: outputs are shareable CTO-grade reports
+
                     +----------------------+
                     |   GitHub Repo URL    |
                     +----------+-----------+
@@ -56,15 +65,6 @@ architecture map, production readiness scorecard, risks, and quick wins.
               |                |                |
               v                v                v
         report.md        scorecard.json      graph.json
-
-
-
-## **Design principles**
-
-- Evidence-first: every score must cite file-level evidence
-- Deterministic scoring: repeatable rubric evaluation
-- Verifier-gated: unsupported claims reduce confidence
-- Artifact-driven: outputs are shareable CTO-grade reports
 
 
 ## Why
