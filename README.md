@@ -6,6 +6,7 @@ architecture map, production readiness scorecard, risks, and quick wins.
 
 ## Architecture
 
+<img width="8192" height="3020" alt="DDA-Agent" src="https://github.com/user-attachments/assets/fd9a6e9f-1127-49f3-be11-278a8b1afbeb" />
 
 
 ## **Design principles**

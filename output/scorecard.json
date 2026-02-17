@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "repo": {
+    "url": "https://github.com/prometheus/prometheus",
+    "commit": "78020ad60ea11485f8087dce949e5f034d197673",
+    "name": "prometheus"
+  },
+  "run": {
+    "id": "55232bf76637",
+    "timestamp": ""
+  },
+  "overall": {
+    "score": 3.3,
+    "confidence": 0.52,
+    "rationale": "Evidence-first v1: focuses on repo structure, docs, CI, dependency signals, and deploy artifacts. Deep reliability/performance detectors are next.",
+    "evidence": [
+      {
+        "type": "evidence_id",
+        "ref": "EVID-DOC-README"
+      },
+      {
+        "type": "evidence_id",
+        "ref": "EVID-STRUCT-TOPLEVEL"
+      },
+      {
+        "type": "evidence_id",
+        "ref": "EVID-OBS-PROM"
+      },
+      {
+        "type": "evidence_id",
+        "ref": "EVID-SEC-SCANNERS"
+      },
+      {
+        "type": "evidence_id",
+        "ref": "EVID-CI-GHA-001"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "arch_clarity",
+      "name": "Architecture Clarity",
+      "score": 4.0,
+      "confidence": 0.7,
+      "notes": "Inferred from structure + docs",
+      "evidence": [
+        {
+          "type": "evidence_id",
+          "ref": "EVID-DOC-README"
+        },
+        {
+          "type": "evidence_id",
+          "ref": "EVID-STRUCT-TOPLEVEL"
+        }
+      ],
+      "recommendations": []
+    },
+    {
+      "id": "ops_readiness",
+      "name": "Operational Readiness",
+      "score": 3.0,
+      "confidence": 0.55,
+      "notes": "No IaC/deploy assets detected (scanned set)",
+      "evidence": [],
+      "recommendations": []
+    },
+    {
+      "id": "observability",
+      "name": "Observability",
+      "score": 3.5,
+      "confidence": 0.6,
+      "notes": "Heuristic from repo artifacts",
+      "evidence": [
+        {
+          "type": "evidence_id",
+          "ref": "EVID-OBS-PROM"
+        }
+      ],
+      "recommendations": []
+    },
+    {
+      "id": "reliability",
+      "name": "Reliability & Correctness",
+      "score": 3.0,
+      "confidence": 0.45,
+      "notes": "v1: heuristic-only (deep detectors next)",
+      "evidence": [],
+      "recommendations": []
+    },
+    {
+      "id": "security",
+      "name": "Security Posture",
+      "score": 3.0,
+      "confidence": 0.45,
+      "notes": "Dependency hygiene + scanner hints",
+      "evidence": [
+        {
+          "type": "evidence_id",
+          "ref": "EVID-SEC-SCANNERS"
+        }
+      ],
+      "recommendations": []
+    },
+    {
+      "id": "data_contracts",
+      "name": "Data Contracts & Migrations",
+      "score": 2.5,
+      "confidence": 0.4,
+      "notes": "v1: not deeply analyzed yet",
+      "evidence": [],
+      "recommendations": []
+    },
+    {
+      "id": "testing",
+      "name": "Testing Discipline",
+      "score": 4.0,
+      "confidence": 0.65,
+      "notes": "CI presence as proxy",
+      "evidence": [
+        {
+          "type": "evidence_id",
+          "ref": "EVID-CI-GHA-001"
+        }
+      ],
+      "recommendations": []
+    },
+    {
+      "id": "performance",
+      "name": "Performance Risks",
+      "score": 2.5,
+      "confidence": 0.4,
+      "notes": "v1: not deeply analyzed yet",
+      "evidence": [],
+      "recommendations": []
+    },
+    {
+      "id": "deployment",
+      "name": "Deployment Maturity",
+      "score": 4.5,
+      "confidence": 0.6,
+      "notes": "IaC/deploy artifacts detected",
+      "evidence": [],
+      "recommendations": []
+    },
+    {
+      "id": "cost",
+      "name": "Cost Risk",
+      "score": 3.0,
+      "confidence": 0.35,
+      "notes": "v1: not deeply analyzed yet",
+      "evidence": [],
+      "recommendations": []
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "config"
+    },
+    {
+      "id": "discovery"
+    },
+    {
+      "id": "web"
+    },
+    {
+      "id": "tsdb"
+    },
+    {
+      "id": "storage"
+    },
+    {
+      "id": "util"
+    },
+    {
+      "id": "cmd"
+    },
+    {
+      "id": "model"
+    },
+    {
+      "id": "documentation"
+    },
+    {
+      "id": "promql"
+    },
+    {
+      "id": "docs"
+    },
+    {
+      "id": "plugins"
+    }
+  ],
+  "edges": []
+}
